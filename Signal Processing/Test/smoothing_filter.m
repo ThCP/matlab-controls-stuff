@@ -1,4 +1,4 @@
-%% Moving average
+%% Smoothing filter
 
 close all, clear all, clc;
 

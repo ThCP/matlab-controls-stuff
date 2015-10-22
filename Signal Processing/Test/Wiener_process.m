@@ -4,9 +4,11 @@
 % W[0] = 0
 % DW[n] ~ N(0,Ts)
 
+close all, clear all,clc;
+
 N = 1000;
 
-MAX_REPS = 10;
+MAX_REPS = 1;
 
 Ts = 1;
 
