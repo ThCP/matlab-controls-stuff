@@ -9,7 +9,7 @@ MAX_REPS = 1;
 Ts = 1;
 
 n = [0:1:N-1];
-beta = 0.005;
+beta = 0.5;
  
 
 for rep=1:MAX_REPS
