@@ -4,12 +4,12 @@ close all, clear all, clc;
 
 N = 1000;
 
-MAX_REPS = 10;
+MAX_REPS = 1;
 
 Ts = 1;
 
 n = [0:1:N-1];
-beta = 0.5;
+beta = 0.005;
  
 
 for rep=1:MAX_REPS
