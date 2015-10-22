@@ -1,0 +1,75 @@
+%% Signal Processing
+% Lab 02
+
+% Exercise 1
+
+close all, clear all, clc;
+
+% X[n] = sigma[n] * F[N] + mu[n] DEFINITION OF X[n]
+
+MAX_LENGTH = 100;
+
+n = [1:1:MAX_LENGTH];
+
+M = 5;
+
+%% Step 1
+figure;
+
+for i=1:M
+    F = randn (1,MAX_LENGTH);
+    subplot(2,3,i);
+    plot (n, F);
+end
+
+%% Step 2
+sigma = ones(1,MAX_LENGTH);
+mu = zeros(1,MAX_LENGTH);
+
+X = sigma .* F + mu;
+
+% Linear mu
+% mu changes linearly between mu1 and mu2
+mu1 = 15; 
+mu2 = 42;
+
+mu = linspace(mu1,mu2, MAX_LENGTH);
+
+X = sigma .* F + mu;
+figure;
+plot (n,X);
+
+% Piecewise constant mu
+% mu is constant over an interval, but changes from an interval to another
+
+clear mu;
+
+n_intervals = 10;
+tot_len = 1;
+
+while tot_len < MAX_LENGTH
+    interval_length = round(rand()*(2*n_intervals+1));
+    tot_len = tot_len + interval_length            
+    if (tot_len > MAX_LENGTH)
+        interval_length = -MAX_LENGTH + tot_len;
+        tot_len = MAX_LENGTH;
+        val = rand()*10;
+        mu(tot_len-interval_length:tot_len) = val;
+        break;
+    end
+    val = rand()*10;
+    mu(tot_len-interval_length:tot_len) = val;
+end
+
+X = sigma .* F + mu;
+
+figure
+% plot (n, mu, 'o');
+plot (n, X);      
+
+% Cyclic mu
+% mu is a sinusoid which oscillates between two arbitrary values mu1 and
+% mu2
+
+
+        
