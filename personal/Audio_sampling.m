@@ -18,7 +18,7 @@ clear y Fs
 %% starting sample
 n = 0:1:length(y)-1;
 N = length(n);
-T = 1/Fs
+T = 1/Fs;
 
 plot (n,y(:,1)); title ('starting sample');
 
@@ -26,9 +26,7 @@ plot (n,y(:,1)); title ('starting sample');
 X = fft(y(:,1));
 
 Xpos = X(1:N/2); % without this truncation I see the repetition of the spectrum
-f = 1/N*(0:N/2 Both are comedies that start off with the girl's confession being confused for something else by the guy. Both are 4 panel manga and are light-hearted and easy to read. There isn't really a plot, only school setting comedy and very slight romance. Both series are sure to make you laugh at each page.
-
-The characters aren't terribly similar, although the dynamic between Tomo and Junichirou reminds me of Hori and Kashima from GSNK somewhat. Still, they're all very likeable and entertaining. -1); 
+f = 1/N*(0:N/2-1); 
 
 figure
 plot (f, Xpos);
@@ -69,7 +67,7 @@ ntrunc = 1:1:N/2;
 subplot(2,1,1);
 plot (ntrunc, xnew); title ('xnew');
 subplot(2,1,2);
-plot (n, y(:,1));, title ('x');
+plot (n, y(:,1)); title ('x');
 % plot (n, xnew);
 
 % sound(abs(xnew), Fs);

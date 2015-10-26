@@ -3,14 +3,14 @@
 % sliding mean window and plots the corresponding signal and its mean on
 % the same graph.
 
-function plot_mean_signal (signal, window)
+function plot_mean_signal (signal, window, name)
 
 n = 1:1:length(signal);
 
 mean_value = sliding_mean(signal, window);
 
-figure ('name', 'Signal and mean');
+figure ('name', name);
 plot(n, signal, n, mean_value);
-legend('X[n]', 'mu[n]');
+legend(name, 'mu[n]');
 
 

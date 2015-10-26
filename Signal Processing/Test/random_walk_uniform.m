@@ -14,7 +14,7 @@ close all;
 
 n = [0:1:N-1];
 
-DX = random ('unif', 0, 1, 1, N);
+DX = random ('unif', -1, 1, 1, N);
 
 X = zeros(1,N);
 % return
@@ -24,4 +24,4 @@ for i=2:N
     X(i) = X(i-1) + DX(i);
 end
 % 
-plot (n, X);
+% plot (n, X);
