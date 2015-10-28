@@ -5,7 +5,7 @@
 
 function plot_mean_signal (signal, window, name)
 
-n = 1:1:length(signal);
+n = 0:1:length(signal)-1;
 
 mean_value = sliding_mean(signal, window);
 

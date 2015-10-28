@@ -8,7 +8,7 @@
 % X[0] = 0
 % DX[n] ~ U(0,1)
 
-function X = random_walk_uniform (N, Ts)
+function X = random_walk_uniform (N)
 
 close all;
 

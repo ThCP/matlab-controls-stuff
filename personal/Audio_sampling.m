@@ -19,11 +19,11 @@ clear y Fs
 n = 0:1:length(y)-1;
 N = length(n);
 T = 1/Fs;
-
-plot (n,y(:,1)); title ('starting sample');
+x = y(:,1);
+plot (n,x); title ('starting sample'); % I consider only one channel instead of 2
 
 %% spectrum
-X = fft(y(:,1));
+X = fft(x);
 
 Xpos = X(1:N/2); % without this truncation I see the repetition of the spectrum
 f = 1/N*(0:N/2-1); 
@@ -64,9 +64,9 @@ axis tight
 xnew = ifft(Xnew);
 figure
 ntrunc = 1:1:N/2;
-subplot(2,1,1);
-plot (ntrunc, xnew); title ('xnew');
 subplot(2,1,2);
+plot (ntrunc, xnew); title ('xnew');
+subplot(2,1,1);
 plot (n, y(:,1)); title ('x');
 % plot (n, xnew);
 
