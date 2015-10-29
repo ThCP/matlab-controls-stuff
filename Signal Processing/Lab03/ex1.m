@@ -30,6 +30,10 @@ W(1) = 0;
     hold on;
 end
 
+sigma_W = sqrt(n);
+plot (n, sigma_W,'k');
+plot (n, -sigma_W, 'k');
+
 %% Step 2
 
 N = 1000;
@@ -69,8 +73,8 @@ bins = min(T0):1:max(T0);
                          % use them to plot the estimated pdf 
 figure
 plot(X1, N1); hold on;
-bins = linspace(min(T1), max(T1), (max(T1)-min(T1)));
-% bins = min(T1):1:max(T1);
+% bins = linspace(min(T1), max(T1), (max(T1)-min(T1)));
+bins = min(T1):1:max(T1);
 [N2, X2] = hist (T1,bins);
 plot(X2, N2);
 legend ('T0', 'T1');
