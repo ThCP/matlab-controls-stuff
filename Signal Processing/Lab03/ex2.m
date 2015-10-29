@@ -60,8 +60,3 @@ V(1) = 0;
     plot (n, V);
     hold on;
 end
-return
-sigma_V = sqrt(1/(2*beta) * (1-exp(-2*beta*n)));
-% figure;
-plot (n, sigma_V,'ko');
-plot (n, -sigma_V, 'ko');
