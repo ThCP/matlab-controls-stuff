@@ -15,6 +15,3 @@ W(1) = 0;
 for i=2:N
     W(i) = W(i-1) + DW(i);
 end
-
-plot (n, W);
-hold on;    

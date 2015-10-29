@@ -16,16 +16,8 @@ Ts = 1;
 n = [0:1:N-1];
 
 for rep=1:MAX_REPS
-DW = random ('norm', 0, Ts, 1, N);
-
-W = zeros(1,N);
-% return
-W(1) = 0;
+    W = my_wiener_process(N, Ts);
     
-    for i=2:N
-        W(i) = W(i-1) + DW(i);
-    end
-
     plot (n, W);
     hold on;
 end
@@ -51,16 +43,8 @@ t0 = 50;
 t1 = 500;
 
 for rep=1:MAX_REPS
-DW = random ('norm', 0, Ts, 1, N);
+    W = my_wiener_process(N, Ts);
 
-W = zeros(1,N);
-% return
-W(1) = 0;
-    
-    for i=2:N
-        W(i) = W(i-1) + DW(i);
-    end
-    
     T0(rep) = W(t0);
     T1(rep) = W(t1);
 end

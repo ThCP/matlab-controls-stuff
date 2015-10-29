@@ -17,15 +17,8 @@ beta = 0.01;
 n = [0:1:N-1];
 
 for rep=1:MAX_REPS
-DV = random ('norm', 0, (1/(2*beta)*(1-exp(-2*beta*Ts)))^(1/2), 1, N); 
-
-V = zeros(1,N);
-V(1) = 0;
+    V = my_ornstein_uhlenbeck(N, Ts, beta);
     
-    for i=2:N
-        V(i) = V(i-1)*exp(-beta*Ts) + DV(i);
-    end
-
     plot (n, V);
     hold on;
 end
@@ -48,15 +41,11 @@ betas = logspace(b1,b2,5);
 n = [0:1:N-1];
 figure
 for rep=1:MAX_REPS
-DV = random ('norm', 0, (1/(2*betas(rep))*(1-exp(-2*betas(rep)*Ts)))^(1/2), 1, N); 
-
-V = zeros(1,N);
-V(1) = 0;
+    V = my_ornstein_uhlenbeck(N, Ts, betas(rep));
     
-    for i=2:N
-        V(i) = V(i-1)*exp(-betas(rep)*Ts) + DV(i);
-    end
-
     plot (n, V);
     hold on;
 end
+
+W = my_wiener_process(N, Ts);
+plot (n, W, 'o');
