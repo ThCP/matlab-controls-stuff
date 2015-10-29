@@ -18,7 +18,7 @@ n = [0:1:N-1];
 % pd = makedist('Normal', 'mu', 0, 'sigma', Ts);
 
 for rep=1:MAX_REPS
-DV = random ('norm', 0, 1/(2*beta)*(1-exp(-2*beta*Ts)), 1, N); 
+DV = random ('norm', 0, (1/(2*beta)*(1-exp(-2*beta*Ts)))^(1/2), 1, N); %% #################### CONTROLLA
 % generates a matrix of size 1*N containing values distributed according to
 % the chosen probability distribution
 
