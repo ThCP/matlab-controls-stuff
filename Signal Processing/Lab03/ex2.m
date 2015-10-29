@@ -7,29 +7,35 @@ close all, clear all,clc;
 
 
 %% Step 1
-N = 1000;
+N = 100;
 
-MAX_REPS = 5;
+MAX_REPS = 50;
 
 Ts = 1;
+beta = 0.01;
 
 n = [0:1:N-1];
 
 for rep=1:MAX_REPS
-DW = random ('norm', 0, Ts, 1, N);
+DV = random ('norm', 0, 1/(2*beta)*(1-exp(-2*beta*Ts)), 1, N); 
 
-W = zeros(1,N);
-% return
-W(1) = 0;
+V = zeros(1,N);
+V(1) = 0;
     
     for i=2:N
-        W(i) = W(i-1) + DW(i);
+        V(i) = V(i-1)*exp(-beta*Ts) + DV(i);
     end
 
-    plot (n, W);
+    plot (n, V);
     hold on;
 end
 
+sigma_V = sqrt(1/(2*beta) * (1-exp(-2*beta*n)));
+% figure;
+plot (n, sigma_V,'ko');
+plot (n, -sigma_V, 'ko');
+
+return
 %% Step 2
 
 N = 1000;
