@@ -43,9 +43,13 @@ figure
 for rep=1:MAX_REPS
     V = my_ornstein_uhlenbeck(N, Ts, betas(rep));
     
+    % $$$$$$
+%        legendInfo{i} = ['$$B = ' num2str(betas(i)) '$$'];
+    % $$$$$$
+
     plot (n, V);
     hold on;
 end
 
 W = my_wiener_process(N, Ts);
-plot (n, W, 'o');
+plot (n, W, 'o-');
