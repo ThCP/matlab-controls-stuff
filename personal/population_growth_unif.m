@@ -6,7 +6,7 @@
 
 clear all, close all, clc;
 
-N = 10;
+N = 5;
 REPS = 10;
 
 n = 0:1:N-1;
@@ -15,10 +15,12 @@ X = zeros(1,N);
 X(1) = 1;
 
 for ii=1:REPS
-    DX = random ('unif', 0, 1, 1, N);
+%     DX = random ('unif', 0, 1, 1, N);
 
     for i=2:N
-        X(i) = X(i-1) + round(X(i-1) * DX(i));
+%         X(i) = X(i-1) + round(X(i-1) * DX(i));
+        DX = random('bino', X(i-1), 1/2, 1, 1);
+        X(i) = X(i-1) + DX;
     end
     
     plot (n,X), hold on;
