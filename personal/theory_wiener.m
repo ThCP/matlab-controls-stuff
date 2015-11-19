@@ -19,8 +19,8 @@ end
 variance = n;
 std_dev = sqrt(variance);
 
-plot (n, std_dev);
-plot (n, -std_dev);
+plot (n, std_dev, 'ko');
+plot (n, -std_dev, 'ko');
 % return
 %% Mesh graph of pdf+wiener
  Z=zeros(length(W));
