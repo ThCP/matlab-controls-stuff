@@ -1,28 +1,23 @@
 %% Sliding window mean
-% This function receives as input parameters the signal and the size of the
-% sliding mean window, and returns an array which contains the values of
-% the mean calculated using the given window size.
+% This function receives as input parameters the signal, the size of the
+% sliding mean window and the step length.
+% It then returns an array which contains the values of the mean calculated 
+% using the given window size.
 
 function [mu_est] = sliding_mean (X, Nw, Istep)
 N = length (X);
-% mu = ones(1,N);
+mu_est = zeros(1,N);
 
-switch nargin
-    case 2
-        ii = 1;
+switch nargin % check the number of arguments
+    case 2 
+        ii = 1; % no Istep present
     case 3
-        ii = Istep;
+        ii = Istep; % set the correct Istep
 end
-c=0;
-for n=0:ii:N-1
-    
-% for n=0:N-1
+
+for n=0:ii:N-1 % start looping
     n1 = (n-Nw/2);
     n2 = n+Nw/2;
-
-%     n1 = (n+ii-Nw/2);
-%     n2 = n+ii+Nw/2;
-
 
     if(n1<0)
         n1=0;
@@ -31,11 +26,7 @@ for n=0:ii:N-1
     if(n2>N-1)
         n2=N-1;
     end
-
-    Xn = X(n1+1:n2+1);
-    mu_est(c+1) = mean(Xn);
-    c=c+1;
-%     mu_est(n+1) = mean(Xn);
-%     mu_est(n+1:n+length(Xn)-1).*mu_est(n+1);
-        
+    
+    Xn = X(n1+1:n2); % This is the window
+    mu_est(n+1:n+ii)=ones(1,ii)*mean(Xn); % set the mean value to the current step  
 end
