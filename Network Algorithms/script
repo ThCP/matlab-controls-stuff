@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ $# -ne 4 ]
+then
+	echo 'wrong number of arguments'
+	exit
+fi 
+datatype1=$3
+datatype2=$4
+string='format:fmt=$(attr:'$datatype1':bytes)\t$(attr:'$datatype2':bytes)\n;quitafter='$1
+echo $string
+bmon -r 0.2 -p wlan0 -o $string > $2
+
+
