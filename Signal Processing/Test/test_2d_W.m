@@ -2,7 +2,7 @@
 
 close all, clear all, clc;
 
-N = 250000; % number of steps
+N = 25000; % number of steps
 
 Ts = 1; % sampling time
 

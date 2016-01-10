@@ -2,8 +2,8 @@
 
 close all, clear all, clc;
 
-% filename='/home/riccardo/09 - Viva La Vida.flac';
-filename='/home/riccardo/enV - Electronic Super Joy OST - 11 Switchblade.flac'
+filename='/home/riccardo/09 - Viva La Vida.flac';
+% filename='/home/riccardo/enV - Electronic Super Joy OST - 11 Switchblade.flac'
 
 [y,Fs] = audioread(filename);
 
@@ -12,8 +12,8 @@ samples = [1,2*Fs]; % fetch samples from 1 to 2 * Fs, i.e. 2 seconds of audio
 clear y Fs
 
 [y,Fs] = audioread(filename, samples);
-% sound(y,Fs)
-% pause
+sound(y,Fs)
+pause
 
 %% starting sample
 n = 0:1:length(y)-1;
@@ -70,4 +70,4 @@ subplot(2,1,1);
 plot (n, y(:,1)); title ('x');
 % plot (n, xnew);
 
-% sound(abs(xnew), Fs);
+sound(abs(xnew), Fs);

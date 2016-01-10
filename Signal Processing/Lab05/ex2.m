@@ -6,7 +6,6 @@ close all, clear all, clc;
 %% step 1
 finn = fopen('SpectralEstimation.txt');
 x = fscanf(finn, '%f');
-
 N = length(x);
 
 fclose(finn);
@@ -14,7 +13,7 @@ fclose(finn);
 %% step 2
 n = 0:1:N-1;
 plot (n, x);
-
+title('starting signal');
 %% step 3
 X_fft = fft(x);
 
@@ -25,11 +24,13 @@ basic_per = abs((Xpos).^2);
 n = 0:1:N/2-1;
 figure
 plot (f, basic_per);
+title('basic periodogram');
 figure
 plot (f, unwrap(angle(Xpos)));
-
+title('unwrapped phase of Xpos');
 
 %% step 4
-pxx = pwelch(x, 2000);
+pxx = pwelch(x, 2000, 1000);
 figure;
 plot (0:1:length(pxx)-1, pxx);
+title('welch periodogram');

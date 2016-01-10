@@ -6,7 +6,6 @@ close all, clear all, clc;
 %% step 1
 finn = fopen('AtomicClock.txt');
 data = fscanf(finn, '%f');
-
 fclose(finn);
 
 Nw = 100;
@@ -18,13 +17,13 @@ n1 = 0:1:length(data)-1;
 n2 = 0:Istep:Istep*length(mu_data)-1;
 %% step 2 
 plot (n1, data, n2, mu_data);
-title('mu_data');
+title('mu_{data}');
 
 %% step 3
 std_data = sliding_std(data,Nw, Istep);
 figure
 plot (n2, std_data);
-title('std_data');
+title('std_{data}');
 %% step 5
 s1 = mu_data + 2 * std_data;
 s2 = mu_data - 2 * std_data;

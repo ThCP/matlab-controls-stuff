@@ -3,6 +3,9 @@
 clear all, close all, clc;
 
 N = 10000;
+F = randn(1,N);
+n = 0:1:N-1;
+
 
 % Take mu[n]=1 and, by changing sigma[n], generate a random process with 
 % time-varying variance. 

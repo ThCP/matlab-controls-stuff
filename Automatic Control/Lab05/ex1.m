@@ -30,7 +30,7 @@ t_grid(T_p);
 % 
 %% Lead network design
 % Start by taking a value of m_D able to introduce the phase lead I need,
-% which is delta_Phi = #°
+% which is delta_Phi = #ï¿½
 
 m_D = 6 % SET
 w_norm = 0.7; % SET
@@ -53,7 +53,7 @@ k = 10^(3.82/20) % SET
 L3 = L2 * k;
 C = C * k;
 nichols(L3);
-% return;
+return;
 
 %% Simulation
 % simulation initialization

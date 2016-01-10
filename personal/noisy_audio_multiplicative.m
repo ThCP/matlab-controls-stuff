@@ -2,8 +2,8 @@
 
 clear all, close all, clc;
 
-% filename='/home/riccardo/09 - Viva La Vida.flac';
-filename='/home/riccardo/enV - Electronic Super Joy OST - 11 Switchblade.flac'
+filename='/home/riccardo/09 - Viva La Vida.flac';
+% filename='/home/riccardo/enV - Electronic Super Joy OST - 11 Switchblade.flac'
 
 [y,Fs] = audioread(filename);
 
@@ -33,7 +33,7 @@ subplot(2,1,2);
 plot(n,x_noisy); title('noisy signal');
 axis tight;
 
-return
+% return
 
 sound(x,Fs);
 pause;

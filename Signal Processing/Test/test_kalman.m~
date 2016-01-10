@@ -1,0 +1,25 @@
+%% Test Kalman filter
+
+clear all, close all, clc;
+
+%% Data
+Ts = 1;
+beta = 0.1;
+ux = 10;
+uy = 10;
+xix = rand(1);
+xiy = randn(1);
+v1 = randn(1);
+v2 = randn(1);
+
+F = [ 0 1 0 0 ; 0 -beta 0 0 ; 0 0 1 0 ; 0 0 -beta 0 ]
+u = [ 0 ux 0 uy ]
+xi = [ 0 xix 0 xiy ]
+H = [1 0 0 0 ; 0 0 1 0]
+v = [ v1 v2 ]
+
+%% System model equation
+% x[n] = phi*x[n-1] + eta[n-1] + b*u[n-1]
+% z[n] = H*x[n] + v[n]
+
+phi = expm(F*Ts);
