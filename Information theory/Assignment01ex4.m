@@ -13,7 +13,7 @@
 %% initialization
 close all, clear all, clc;
 
-%% generate cumiulative distribution vector
+%% generate cumulative distribution vector
 Nsymb = 20;
 % p = [ 0 0.01 0.03 0.06 0.10 0.15 0.20 0.5 1 ];
 
@@ -41,9 +41,9 @@ y1 = zeros(1, length(x));
 
 codeword_y1 = { '000', '001', '010', '011', '100', '101', '110', '111' };
 
-codeword_y2 = { '000000', '000001', '00001', '0010', '0011', '0001', '01', '1' };
+codeword_y2 = { '000000', '000001', '00001', '0010', '0011', '0001', '01', '1' }; % huffman
 
-codeword_y3 = { '0000001', '000010', '000001', '00010', '00110', '00100', '01', '1' };
+codeword_y3 = { '0000001', '000010', '000001', '00010', '00110', '00100', '01', '1' }; % horrible encoder
 max_c2 = 6;
 max_c3 = 7;
 

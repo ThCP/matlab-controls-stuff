@@ -13,8 +13,8 @@
 %% initialization
 close all, clear all, clc;
 
-%% generate cumiulative distribution vector
-Nsymb = 4;
+%% generate cumulative distribution vector
+Nsymb = 100;
 % p = [ 0 0.01 0.03 0.06 0.10 0.15 0.20 0.5 1 ];
 
 t = [0.01 0.02 0.03 0.04 0.05 0.05 0.3 0.5];
@@ -80,7 +80,7 @@ prob_1 = s/n_bits*100;
 % evaluate the efficiency
 s=0;
 for i=1:length(t)
-    s = s + t(i)*length(strtrim(char(codeword_y1(i))))
+    s = s + t(i)*length(strtrim(char(codeword_y1(i))));
 end
 efficiency = entropy/s
 
@@ -113,7 +113,7 @@ end
 % evaluate the efficiency
 s=0;
 for i=1:length(t)
-    s = s + t(i)*length(strtrim(char(codeword_y2(i))))
+    s = s + t(i)*length(strtrim(char(codeword_y2(i))));
 end
 efficiency = entropy/s
 return
