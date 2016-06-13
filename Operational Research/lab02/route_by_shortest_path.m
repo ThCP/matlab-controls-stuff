@@ -1,5 +1,9 @@
 %% Route by shortest path
 % [flow_matrix, max_flow] = route_by_shortest_path (bij, arcs, number_nodes, trf_m)
+% This function was used to evaluate the flow on every lightpath present in
+% the logical topology. It does so by routing every connection present in
+% the traffic matrix on the logical topology using a shortest path
+% algorithm. 
 
 function [flow_matrix, max_flow] = route_by_shortest_path (bij, arcs, number_nodes, trf_m)
 
@@ -13,6 +17,7 @@ for i = 1:length(arcs)
     arx = arcs(i).rx;
     % find the shortest path between atx and arx
     path = shortestpath(G_bij, atx, arx);
+    
     % add to the flow matrix the traffic flowing on each active edge
     for k = 1:length(path)-1
         % this implies no flow splitting

@@ -1,8 +1,13 @@
  %% generate_flow_matrix
-% [flow_matrix max_flow] = generate_flow_matrix (trf_m, number_nodes, n_delta, p,
-% n_check, trf_m)
+% [flow_matrix max_flow] = generate_flow_matrix (trf_m, number_nodes, n_delta, p, n_check, trf_m)
+% Starting version of the algorithm. After testing, we decided to change
+% the choice of the random arc from the one with lowest load to a random
+% arc in the second half of the arc list. This yielded better results, than
+% the current solution. 
 
-function [ bij ,arcs ] = generate_flow_matrix (number_nodes, n_delta, p, n_check, trf_m)
+% NOTE: this script is outdated, we use generate_flow_matrix_bis instead.
+
+function [ bij, arcs ] = generate_flow_matrix (number_nodes, n_delta, p, n_check, trf_m)
 
 % define the lightpath matrix
 bij = zeros(number_nodes, number_nodes);

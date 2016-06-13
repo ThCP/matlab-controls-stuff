@@ -1,5 +1,7 @@
 %% Test algorithm vs random topology
 
+% Early test of algorithm compared with a random digraph. Outdated.
+
 close all
 
 number_nodes = 40;

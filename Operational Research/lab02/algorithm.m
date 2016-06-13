@@ -1,6 +1,3 @@
-%% Operational research
-% Implement a greedy algorithm for the solution of the LTD problem
-
 %% Algorithm
 % 1. Given the traffic matrix we sort the nodes by traffic (desc.)
 % 2. we assign nodes according to SCOM
@@ -12,6 +9,9 @@
 % f_max)
 
 % We still need to decide how to route the traffic (shortest path, random)
+
+% NOTE: this script is outdated, it was used at the beginning to test the
+% algorithm itself, then other test scripts were used.
 
 %% Data
 clear all, close all, clc;

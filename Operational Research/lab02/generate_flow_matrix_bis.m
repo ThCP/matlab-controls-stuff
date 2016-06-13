@@ -1,8 +1,11 @@
 %% generate_flow_matrix
-% [flow_matrix max_flow] = generate_flow_matrix_bis (trf_m, number_nodes, n_delta, p,
-% n_check, trf_m)
+% [flow_matrix max_flow] = generate_flow_matrix_bis (trf_m, number_nodes, n_delta, p, n_check, trf_m)
 
-function [ bij ,arcs ] = generate_flow_matrix_bis (number_nodes, n_delta, p, n_check, trf_m)
+% Updated version of the algorithm. In this solution we take a random arc
+% from the bottom half (lowest load) of the arc list and we add it to the
+% topology. 
+
+function [ bij, arcs ] = generate_flow_matrix_bis (number_nodes, n_delta, p, n_check, trf_m)
 
 % define the lightpath matrix
 bij = zeros(number_nodes, number_nodes);

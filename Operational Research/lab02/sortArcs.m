@@ -1,4 +1,7 @@
 %% sortArcs
+% This script sorts arcs by value (i.e. amount of traffic flowing from s to
+% d according to trf_m)
+% Note: outdated
 
 arcsFields = fieldnames(arcs);
 arcsCell = struct2cell(arcs);

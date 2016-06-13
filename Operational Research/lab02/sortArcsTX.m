@@ -1,7 +1,8 @@
 %% sortArcsTX
 % arcsSorted = sortArcsTX(arcs);
+% This script sorts arcs by transmitter
 
-function arcsSorted = sortArcsTX(arcs);
+function arcsSorted = sortArcsTX(arcs)
 
 arcsFields = fieldnames(arcs);
 arcsCell = struct2cell(arcs);
@@ -13,8 +14,3 @@ arcsCell = sortrows(arcsCell, 3);
 arcsCell = flip(arcsCell); % decreasing order
 arcsCell = reshape(arcsCell', sz);
 arcsSorted = cell2struct(arcsCell, arcsFields, 1);
-
-% for id = 1:length(arcsSorted)
-%     fprintf('%d\n',id)
-%     disp(arcsSorted(id))
-% end
