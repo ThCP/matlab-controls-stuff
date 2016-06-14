@@ -1,21 +1,21 @@
 %% Test multiple times with different n_delta and different node_number
 % function sol_algo = test_multiple_times_multiple_params(trf_m, n_check, prob, tries, delta, description)
+% The current script can run on its own, given a traffic matrix trf_m, or
+% can be called from another script, supplying different parameters. 
+% It tests the algorithm, scom and a randomly generated topology against
+% the trf_m and reports the resulting max_flow. It also reports some data
+% regarding the current experiment. 
 
-% clear all, close all, clc;
 
-% number_nodes = 40;
-% n_delta = 1;
 function [min_f, max_f, avg_f, connected] = test_multiple_times_multiple_params(trf_m, n_check, prob, tries, delta, description, flag_print)
-% clear all;
-% close all;
 
 % default values
-check = 3;
-probability = 0.1;
-n_tries = 2;
-n_delta = 2;
-experiment = '';
-p = 1; % print results
+check = 3; % K, arcs placed before taking a random arc from the second half of the list
+probability = 0.1; % probability of taking a random arc
+n_tries = 2; % number of topologies generated when executing the algorithm
+n_delta = 2; % number of transmitters/receivers
+experiment = ''; % name of the experiment
+p = 1; % if 1, print results, if 0 ignore prints
 
 if nargin >= 2
     check = n_check;
@@ -36,7 +36,10 @@ if nargin >= 7
     p = flag_print;
 end
 
-%%
+%% loading traffic matrices from file
+% Note: outdated, these were used to repeat the same test multiple times on
+% the same traffic matrix.
+
 % trf_m = 0.5 + rand(number_nodes, number_nodes);
 % trf_m = trf_m - diag(diag(trf_m));
 
@@ -50,9 +53,9 @@ end
 % trf_m = mat.trf_m;
 % trf_m = flip(trf_m);
 %%
-
 number_nodes = size(trf_m, 1);
 
+% print info about the current test
 if p > 0
 disp('##########################################################');
 disp(experiment);
@@ -67,31 +70,28 @@ disp(s);
 s = sprintf('probability = %.1f', probability);
 disp(s);
 
-disp('');
-disp('');
 end
 
-%%
+%% run the algorithm on the given trf_m
 if p > 0
 disp('start evaluation algorithm');
 end
 [sol_algo, topology_algo, min_connected, connected_algo] = testTopologyMultipleTimes(trf_m, number_nodes, n_tries,  n_delta); % test with reshuffle
 % sol_algo max flow of algorithm, topology_algo best topology,
 % min_connected min flow in connected topology
-%%
+%% generate a topology using scom, given the trf_m
 if p > 0
 disp('start evaluation scom');
 end
-% [sol_scom, topology_scom] = testTopologyMultipleTimes(trf_m, number_nodes, n_tries,  n_delta, 100000, 0); % test scom (no reshuffle)
 [sol_scom, topology_scom] = testSCOM(trf_m, number_nodes, n_delta);
 sol_scom = sol_scom*ones(1,n_tries);
-%%
+%% test a randomly generated topology against  the trf_m
 if p > 0
 disp('start evaluation random topologies');
 end
 [sol_A, min_random, connected_random] = testRandomTopologies(trf_m, number_nodes, 1,  n_delta); % test n_tries random topologies 
 
-%%
+%% elaborate the results
 avg_A = mean(sol_A);
 avg_algo = mean(sol_algo);
 avg_scom = mean(sol_scom);
@@ -105,14 +105,16 @@ max_algo = max(sol_algo);
 max_scom = max(sol_scom);
 
 scom_better = sum(sol_scom-sol_algo<0);
-% results = [max_A min_A avg_A max_algo min_algo avg_algo max_scom min_scom avg_scom];
+
+% generate 3 arrays containing the results, which are the return values of
+% the function
 min_f = [min_A min_algo min_scom];
 max_f = [max_A max_algo max_scom];
 avg_f = [avg_A avg_algo avg_scom];
 %%
 if p > 0
-s = sprintf('min Random = %f   min algorithm = %f    min scom = %f    ', min_A, min_algo, min_scom);
-disp(s);
+    s = sprintf('min Random = %f   min algorithm = %f    min scom = %f    ', min_A, min_algo, min_scom);
+    disp(s);
 end
 
 if p > 0
