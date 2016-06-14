@@ -1,0 +1,27 @@
+1. Using the trfm T find s and d such that t_sd = max t_ij for all ij. Set t_sd = -1.
+2. If both s and d do not appear in S go to 3
+	If either s or d appear in S go to 4
+	If both are present go to 5
+3. If there is a pair of adjacent locations in L (i.e. a possible lightpath between s and d) locate s and d in those positions, then:
+	- add s and d to S
+	- remove from L the locations corresponding to s and d
+4. Suppose s was placed. Then, if a free position adjacent to S exists in L:
+	- place d in this position, add d to S
+	- remove from L the location corresponding to d
+5. If there are still free positions in L, go to 1 otherwise stop. 
+
+T = traffic matrix
+S = set of nodes placed
+L = all positions in topology => matrix bij, manhattan topology
+
+1. trova tsd
+2. 3 check da fare:
+	- s e d non sono presenti in S
+	- s O d è presente in S
+	- s e d sono presenti in S
+3. adjacent locations in manhattan sono
+		#+#
+		+S+ se nel centro della matrice 
+		#+#
+		
+Devo comunque ordinare gli archi
